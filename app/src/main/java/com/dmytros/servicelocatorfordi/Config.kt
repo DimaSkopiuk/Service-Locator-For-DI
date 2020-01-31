@@ -5,7 +5,7 @@ package com.dmytros.servicelocatorfordi
  */
 object Config {
 
-    const val BASE_URL = "http://gateway.marvel.com"
+    const val BASE_URL = "https://gateway.marvel.com"
     const val API_KEY = "ee090767040ee6b31e0aafe2c385ed93"
     const val SECRET = "1ff2293e59056c4c774d6e9f59986674d7970094" //stop looking, it is secret!!!
 }
