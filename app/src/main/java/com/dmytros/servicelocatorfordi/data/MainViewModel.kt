@@ -1,6 +1,6 @@
 package com.dmytros.servicelocatorfordi.data
 
-import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dmytros.servicelocatorfordi.remote.MarvelCharactersRepository
@@ -14,12 +14,13 @@ import org.koin.core.inject
  */
 class MainViewModel : ViewModel(), KoinComponent {
 
+    val characterListLiveData: MutableLiveData<List<MarvelCharacter>> = MutableLiveData(emptyList())
     private val marvelCharactersRepository: MarvelCharactersRepository by inject()
 
     fun requestCharacterList() {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = marvelCharactersRepository.requestList()
-            Log.e("myTag", result.toString())
+            val result = runCatching { marvelCharactersRepository.requestList() }
+            characterListLiveData.postValue(result.getOrNull() ?: emptyList())
         }
     }
 }

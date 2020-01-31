@@ -3,6 +3,7 @@ package com.dmytros.servicelocatorfordi.koin
 import com.dmytros.servicelocatorfordi.Config
 import com.dmytros.servicelocatorfordi.data.MainViewModel
 import com.dmytros.servicelocatorfordi.remote.*
+import com.dmytros.servicelocatorfordi.ui.CharacterAdapter
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import okhttp3.OkHttpClient
@@ -32,5 +33,6 @@ val coreModule = module {
     single { MarvelCharactersRepository() }
     single { MarvelCharacterMapper() }
 
+    factory { CharacterAdapter() }
     viewModel { MainViewModel() }
 }
