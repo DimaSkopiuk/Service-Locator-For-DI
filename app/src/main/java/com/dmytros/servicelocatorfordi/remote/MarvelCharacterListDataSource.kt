@@ -1,6 +1,5 @@
 package com.dmytros.servicelocatorfordi.remote
 
-import okhttp3.ResponseBody
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -10,6 +9,8 @@ import org.koin.core.inject
 class MarvelCharacterListDataSource : KoinComponent {
 
     private val marvelApi: MarvelApi by inject()
+    private val mapper: MarvelCharacterMapper by inject()
 
-    suspend fun request(authSession: AuthSession): ResponseBody = marvelApi.characters(authSession.timestamp, authSession.hash)
+    suspend fun request(authSession: AuthSession) = marvelApi.characters(authSession.timestamp, authSession.hash)
+        .let { result -> mapper.toCore(result) }
 }

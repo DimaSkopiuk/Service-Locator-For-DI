@@ -41,7 +41,8 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
     implementation "org.koin:koin-java:$koinVersion"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion") { exclude module: 'okhttp' }
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.2"
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
     debugImplementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 

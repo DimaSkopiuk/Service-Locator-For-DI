@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.dmytros.servicelocatorfordi.data.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 /**

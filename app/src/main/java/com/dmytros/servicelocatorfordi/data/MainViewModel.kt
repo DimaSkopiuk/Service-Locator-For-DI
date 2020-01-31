@@ -1,5 +1,6 @@
-package com.dmytros.servicelocatorfordi
+package com.dmytros.servicelocatorfordi.data
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dmytros.servicelocatorfordi.remote.MarvelCharactersRepository
@@ -16,6 +17,9 @@ class MainViewModel : ViewModel(), KoinComponent {
     private val marvelCharactersRepository: MarvelCharactersRepository by inject()
 
     fun requestCharacterList() {
-        viewModelScope.launch(Dispatchers.IO) { marvelCharactersRepository.requestList() }
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = marvelCharactersRepository.requestList()
+            Log.e("myTag", result.toString())
+        }
     }
 }

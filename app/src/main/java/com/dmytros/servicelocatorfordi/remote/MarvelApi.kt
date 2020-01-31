@@ -1,7 +1,8 @@
 package com.dmytros.servicelocatorfordi.remote
 
 import com.dmytros.servicelocatorfordi.Config
-import okhttp3.ResponseBody
+import com.dmytros.servicelocatorfordi.remote.data.Character
+import com.dmytros.servicelocatorfordi.remote.data.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,5 +16,5 @@ interface MarvelApi {
         @Query("ts") ts: String,
         @Query("hash") hash: String,
         @Query("apikey") apiKey: String = Config.API_KEY
-    ): ResponseBody
+    ): Response<Character>
 }
