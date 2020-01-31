@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -26,6 +24,11 @@ android {
 dependencies {
     def fragmentVersion = '1.2.0'
     def navVersion = '2.2.0'
+    def koinVersion = '2.0.1'
+    def robolectricVersion = '4.3.1'
+    def espressoVersion = '3.2.0'
+    def retrofitVersion = '2.6.1'
+    def okHttpVersion = '4.1.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -34,7 +37,17 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navVersion"
+    implementation "org.koin:koin-android:$koinVersion"
+    implementation "org.koin:koin-android-viewmodel:$koinVersion"
+    implementation "org.koin:koin-java:$koinVersion"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion") { exclude module: 'okhttp' }
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    debugImplementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    testImplementation "org.koin:koin-test:$koinVersion"
+    testImplementation "androidx.test.ext:junit:1.1.1"
 }
