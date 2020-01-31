@@ -27,8 +27,8 @@ dependencies {
     def koinVersion = '2.0.1'
     def robolectricVersion = '4.3.1'
     def espressoVersion = '3.2.0'
-    def retrofitVersion = '2.6.1'
-    def okHttpVersion = '4.1.0'
+    def retrofitVersion = '2.7.1'
+    def okHttpVersion = '4.3.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
