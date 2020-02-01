@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -29,6 +30,7 @@ dependencies {
     def espressoVersion = '3.2.0'
     def retrofitVersion = '2.7.1'
     def okHttpVersion = '4.3.1'
+    def glide = '4.10.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -44,6 +46,10 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-jackson:$retrofitVersion"
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.2"
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.github.bumptech.glide:glide:$glide"
+
+    kapt "com.github.bumptech.glide:compiler:$glide"
+
     debugImplementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
     testImplementation 'junit:junit:4.12'

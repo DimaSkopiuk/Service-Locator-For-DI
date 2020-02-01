@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dmytros.servicelocatorfordi.R
 import com.dmytros.servicelocatorfordi.data.MarvelCharacter
 import kotlin.properties.Delegates
@@ -24,12 +26,16 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         items[position].apply {
             holder.caption.text = name
+            Glide
+                .with(holder.image)
+                .load(thumbnail)
+                .centerCrop()
+                .transition(DrawableTransitionOptions().crossFade())
+                .into(holder.image)
         }
     }
 
-    override fun getItemCount(): Int {
-        return items.count()
-    }
+    override fun getItemCount() = items.count()
 
     class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         val caption: TextView = root.findViewById(R.id.caption)
